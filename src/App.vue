@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <v-app>
     <Header :navList="navList"/>
     <div class="content">
       <SliderPhoto/>
@@ -9,7 +9,7 @@
           :key="navItem.id"
       />
     </div>
-  </div>
+  </v-app>
 </template>
 
 <script>

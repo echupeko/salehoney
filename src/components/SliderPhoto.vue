@@ -1,29 +1,27 @@
 <template>
-  <v-app>
-    <v-carousel
-        :interval=3000
-        :continuous=false
-        :multiple=false
-        :show-arrows-on-hover="true"
-        cycle
-        hide-delimiter-background
-        delimiter-icon="mdi-minus"
-        color=success
+  <v-carousel
+      :interval=3000
+      :multiple=false
+      :show-arrows-on-hover="true"
+      cycle
+      hide-delimiter-background
+      delimiter-icon=""
+      class="custom-carousel"
+  >
+    <v-carousel-item
+        v-for="item in carouselList"
+        :key="item.id"
+        :src="$srcCarousel + item.id + '.png'"
+        transition="fade-transition"
+        reverse-transition="fade-transition"
     >
-      <v-carousel-item
-          v-for="item in carouselList"
-          :key="item.id"
-          :src="$srcCarousel + item.id + '.png'"
-          reverse-transition="fade-transition"
-          transition="fade-transition"
-      >
-        <div class="carousel-description">
-          <h3>{{ item.title }}</h3>
-          <p>{{item.description}}<p/>
-        </div>
-      </v-carousel-item>
-    </v-carousel>
-  </v-app>
+      <div class="carousel-description">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}
+        <p/>
+      </div>
+    </v-carousel-item>
+  </v-carousel>
 </template>
 
 <script>
@@ -58,13 +56,47 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+.v-carousel .v-window-item {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.custom-carousel .v-carousel__controls__item.v-btn {
+  color: transparent;
+  width: 25px !important;
+  height: 3px !important;
+  margin: 0 4px;
+  background-color: #FF9715 !important;
+  border-radius: unset;
+  opacity: 0.6;
+}
+
+.custom-carousel .v-carousel__controls__item.v-btn.v-btn--active {
+  opacity: 1;
+}
+
+.custom-carousel .v-carousel__controls__item.v-btn.v-btn--active:before {
+  opacity: 0 !important;
+}
+
+.custom-carousel .v-carousel__controls__item.v-btn:hover {
+  background-color: white !important;
+  opacity: 1;
+}
+
+.custom-carousel .v-carousel__controls__item.v-btn:hover:before {
+  opacity: 0 !important;
+}
+
 .carousel-description {
+  padding-top: 100px;
+  height: 20%;
   width: 100%;
   text-align: center;
-  background-color: black;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%);
   position: absolute;
   left: 0;
-  bottom: 50px;
+  bottom: 0;
 }
 </style>
