@@ -52,6 +52,24 @@ h2, h4 {
   font-weight: normal;
 }
 
+h4{
+  white-space:pre;
+  position:relative;
+  display:inline-block;
+  font-size:20px;
+}
+h4:after{
+  content:"";
+  display:block;
+  position:absolute;
+  left:0;top:50%;
+  color:red;
+  width:100%;
+  height:0;
+  border-bottom:2px solid red;
+  transform:rotate(15deg);
+}
+
 img {
   width: 200px;
   height: 100%;

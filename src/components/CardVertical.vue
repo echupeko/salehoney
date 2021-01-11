@@ -5,7 +5,9 @@
       <img :src="this.$srcHoney + card.name + '.jpg'" v-bind:alt="'Мёд' + card.name">
     </div>
     <div class="card-body">
-      <SliderProduct :product-list="card.products"/>
+      <SliderProduct
+          :productList="card.products"
+      />
       <div class="transaction">
         <h4>{{ price }}</h4>
         <Button :title="'В корзину'"/>

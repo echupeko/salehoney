@@ -1,9 +1,13 @@
 <template>
   <div class="slider-bar">
-    <div class="slide-point"></div>
+    <div class="slide-point"
+         :style="{width: 100/visibleProduct.length + '%', left: positionPoint}"
+    ></div>
     <div class="slide-item"
-        v-for="product in visibleProduct"
-        :key="product.id"
+         v-for="product in visibleProduct"
+         :key="product.id"
+         :style="{width: 100/visibleProduct.length + '%'}"
+         @click="changeProduct(product, 100/visibleProduct.length)"
     >
       {{ product.count }} л.
     </div>
@@ -14,9 +18,21 @@
 export default {
   name: "SliderProduct",
   props: ["productList"],
+  data() {
+    return {
+      positionPoint: '',
+    }
+  },
+  methods: {
+    //Нужно решить как связать два компонента
+    changeProduct(product, length) {
+      this.positionPoint = this.visibleProduct.indexOf(product)*length + '%'
+    }
+  },
   computed: {
     visibleProduct() {
-      return this.productList.filter(item => item.visibile)
+      let newProductList = this.productList.filter(item => item.visible);
+      return newProductList
     }
   }
 }
@@ -25,6 +41,7 @@ export default {
 <style scoped>
 .slider-bar {
   position: relative;
+  display: flex;
   width: 100%;
   height: 36px;
   border-radius: 100px;
@@ -37,7 +54,9 @@ export default {
   background-color: rgba(64, 64, 64, 0.4);
   width: 25%;
   height: 100%;
+  left: 0;
   z-index: 0;
+  transition: all .3s ease-in-out;
 }
 
 .slide-item {
@@ -46,5 +65,8 @@ export default {
   width: 25%;
   text-align: center;
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 </style>
