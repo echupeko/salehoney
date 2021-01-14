@@ -7,6 +7,7 @@
     <div class="card-body">
       <SliderProduct
           :productList="card.products"
+          @changeProduct="changeProduct"
       />
       <div class="transaction">
         <h4>{{ price }}</h4>
@@ -29,6 +30,11 @@ export default {
     return {
       price: '2000 Р.'
     }
+  },
+  methods: {
+    changeProduct(product, length) {
+      this.positionPoint = this.visibleProduct.indexOf(product)*length + '%'
+    }
   }
 }
 </script>
@@ -42,7 +48,7 @@ export default {
   width: 260px;
   margin: 20px;
   background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 10px;
+  border-radius: 50px 15px;
   border: 3px solid #4e4c4c;
 
 }

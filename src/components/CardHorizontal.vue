@@ -44,7 +44,7 @@ export default {
   height: 200px;
   overflow: auto;
   background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 10px;
+  border-radius: 50px 15px;
   border: 3px solid #4e4c4c;
 }
 
