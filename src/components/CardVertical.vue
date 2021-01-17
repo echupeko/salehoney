@@ -1,17 +1,17 @@
 <template>
   <div class="card" style="width: 18rem;">
-    <h4 class="card-title">Мёд {{ card.name }}</h4>
+    <h3 class="card-title">Мёд {{ card.name }}</h3>
     <div class="card-info">
       <img :src="this.$srcHoney + card.name + '.jpg'" v-bind:alt="'Мёд' + card.name">
     </div>
     <div class="card-body">
       <SliderProduct
           :productList="card.products"
-          @changeProduct="changeProduct"
+          @changePrice="changePrice"
       />
       <div class="transaction">
-        <h4>{{ price }}</h4>
-        <Button :title="'В корзину'"/>
+        <h2>{{ product.price + ' Р.' }}</h2>
+        <Button class="button" :title="'В корзину'" @click="itemPushToBasket(card,product)"/>
       </div>
 
     </div>
@@ -28,18 +28,26 @@ export default {
   props: ["card"],
   data() {
     return {
-      price: '2000 Р.'
+      product: {}
     }
   },
   methods: {
-    changeProduct(product, length) {
-      this.positionPoint = this.visibleProduct.indexOf(product)*length + '%'
+    changePrice(product) {
+      this.product = product;
+    },
+    itemPushToBasket(honey, pack) {
+      let basketItem = {
+        honey: honey,
+        pack: pack
+      }
+      this.$basketArray.push(basketItem)
+
     }
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .card {
   display: flex;
   flex-direction: column;
@@ -53,6 +61,10 @@ export default {
 
 }
 
+.card-title {
+  margin: 5px 0;
+}
+
 .card-info {
   width: 100%;
   height: 200px;
@@ -61,7 +73,7 @@ export default {
 .card-body {
   box-sizing: border-box;
   width: 100%;
-  padding: 1.25rem;
+  padding: 1rem;
 }
 
 img {
@@ -73,8 +85,16 @@ img {
 .transaction {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-top: 15px;
+}
+
+.transaction {
+  h2 {
+    text-align: center;
+    width: calc(100% - 100px);
+  }
 }
 </style>

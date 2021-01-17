@@ -3,6 +3,7 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify';
 
 Vue.config.productionTip = false
+Vue.prototype.$basketArray = [];
 Vue.prototype.$srcCertificate = '/resource/certificates/';
 Vue.prototype.$srcHoney = '/resource/honey-types/';
 Vue.prototype.$srcCarousel = '/resource/carousel/';

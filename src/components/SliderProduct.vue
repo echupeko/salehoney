@@ -7,7 +7,7 @@
          v-for="product in visibleProduct"
          :key="product.id"
          :style="{width: 100/visibleProduct.length + '%'}"
-         @click="$emit('changeProduct', product, 100/visibleProduct.length);"
+         @click="changeProduct(product, 100/visibleProduct.length)"
     >
       {{ product.count }} л.
     </div>
@@ -22,6 +22,15 @@ export default {
     return {
       positionPoint: '',
     }
+  },
+  methods: {
+    changeProduct(product, length) {
+      this.positionPoint = this.visibleProduct.indexOf(product) * length + '%';
+      this.$emit('changePrice', product);
+    }
+  },
+  mounted() {
+    this.changeProduct(this.visibleProduct[0],0)
   },
   computed: {
     visibleProduct() {

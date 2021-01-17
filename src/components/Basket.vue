@@ -1,12 +1,17 @@
 <template>
-<div class="basket-block">
-  <img src="/resource/basket.png">
-</div>
+  <div class="basket-block">
+    <img src="/resource/basket.png" @click="bask">
+  </div>
 </template>
 
 <script>
 export default {
-name: "Basket"
+  name: "Basket",
+  methods: {
+    bask() {
+      console.log(this.$basketArray)
+    }
+  }
 }
 </script>
 
@@ -14,6 +19,7 @@ name: "Basket"
 .basket-block {
   cursor: pointer;
 }
+
 img {
   width: 60px;
   height: 60px;
