@@ -15,6 +15,7 @@
 
 export default {
   name: "BasketItem",
+  props: ["honey"]
 }
 </script>
 
