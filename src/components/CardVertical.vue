@@ -41,7 +41,6 @@ export default {
         pack: pack
       }
       this.$basketArray.push(basketItem)
-
     }
   }
 }
