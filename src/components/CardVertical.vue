@@ -54,10 +54,9 @@ export default {
   align-items: center;
   width: 260px;
   margin: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 50px 15px;
   border: 3px solid #4e4c4c;
-
 }
 
 .card-title {
