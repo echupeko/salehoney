@@ -1,14 +1,23 @@
 <template>
   <div class="basket-block">
-    <img src="/resource/basket.png" @click="bask">
+    <img src="/resource/basket.png" @click="openBasket">
+    <BasketForm v-if="visibleBasket"/>
   </div>
 </template>
 
 <script>
+import BasketForm from "@/components/BasketForm";
 export default {
   name: "Basket",
+  data() {
+    return{
+      visibleBasket: false
+    }
+  },
+  components: {BasketForm},
   methods: {
-    bask() {
+    openBasket() {
+      this.visibleBasket = !this.visibleBasket;
       console.log(this.$basketArray)
     }
   }
